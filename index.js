@@ -1,13 +1,13 @@
 var $tbody = document.querySelector('tbody');
-var $dateInput = document.querySelector('#date');
-var $searchBtn = document.querySelector('#search');
+//var $dateInput = document.querySelector('#date');
+//var $searchBtn = document.querySelector('#search');
 
 // Add an event listener to the searchButton, call handleSearchButtonClick when clicked
-$searchBtn.addEventListener('click', handleSearchButtonClick);
-
+//$searchBtn.addEventListener('click', handleSearchButtonClick);
+d3.selectAll("#filter-btn").on("click",handleSearchButtonClick);
 // Set filteredReports to addressData initially
 // addressData comes from the addressData.js file
-var filteredReports = addressData;
+var filteredReports = data;
 
 // renderTable renders the filteredReports to the tbody
 function renderTable() {
@@ -29,10 +29,10 @@ function renderTable() {
 
 function handleSearchButtonClick() {
   // Format the user's search by removing leading and trailing whitespace, lowercase the string
-  var filterState = $dateInput.value.trim().toLowerCase();
-
+  //var filterState = $dateInput.value.trim().toLowerCase();
+ filterState=d3.select("#datetime").property("value")
   // Set filteredReports to an array of all addresses whose "state" matches the filter
-  filteredReports = addressData.filter(function(report) {
+  filteredReports = data.filter(function(report) {
     var addressState = report.datetime;
 
     // If true, add the report to the filteredReports, otherwise don't add it to filteredReports
